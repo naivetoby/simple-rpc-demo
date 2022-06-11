@@ -1,8 +1,8 @@
 package vip.toby.demo;
 
 import com.alibaba.fastjson2.JSONObject;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import vip.toby.demo.client.AsyncClient;
@@ -20,13 +20,12 @@ import javax.annotation.PostConstruct;
  */
 @EnableSimpleRpc
 @SpringBootApplication
+@RequiredArgsConstructor
 @Slf4j
 public class Application {
 
-    @Autowired
-    private SyncClient syncClient;
-    @Autowired
-    private AsyncClient asyncClient;
+    private final SyncClient syncClient;
+    private final AsyncClient asyncClient;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -50,7 +49,7 @@ public class Application {
             data.put("x", 2);
             data.put("y", 2);
             RpcResult rpcResult = syncClient.methodName3(plusDTO, data, 3, 3);
-            log.info("result: {}", rpcResult.getServerResult().getMessage());
+            log.info("result: {}", rpcResult.getServerResult().getResult());
             syncClient.methodName1("yyy", 2121);
             asyncClient.methodName2("sss", 27);
         }).start();
