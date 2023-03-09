@@ -3,8 +3,8 @@ package vip.toby.demo.entity;
 import lombok.Data;
 import vip.toby.rpc.annotation.RpcDTO;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 
 @Data
 @RpcDTO

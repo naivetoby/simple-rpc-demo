@@ -1,6 +1,7 @@
 package vip.toby.demo;
 
 import com.alibaba.fastjson2.JSONObject;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -10,8 +11,6 @@ import vip.toby.demo.client.SyncClient;
 import vip.toby.demo.entity.PlusDTO;
 import vip.toby.rpc.annotation.EnableSimpleRpc;
 import vip.toby.rpc.entity.RpcResult;
-
-import javax.annotation.PostConstruct;
 
 /**
  * Application
