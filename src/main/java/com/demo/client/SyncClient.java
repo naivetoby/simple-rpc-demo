@@ -1,4 +1,4 @@
-package vip.toby.demo.client;
+package com.demo.client;
 
 import com.alibaba.fastjson2.JSONObject;
 import vip.toby.demo.entity.PlusDTO;

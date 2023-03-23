@@ -2,11 +2,11 @@ package vip.toby.demo.server;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import vip.toby.rpc.server.RpcServerBaseHandlerInterceptor;
+import vip.toby.rpc.server.RpcServerHandlerInterceptor;
 
 @Component
 @Slf4j
-public class RpcServerDefaultDuplicateHandler extends RpcServerBaseHandlerInterceptor {
+public class RpcServerDefaultDuplicateHandler implements RpcServerHandlerInterceptor {
 
     @Override
     public boolean rpcDuplicateHandle(String method, String correlationId) {

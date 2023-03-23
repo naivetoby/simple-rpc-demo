@@ -1,13 +1,13 @@
 package vip.toby.demo;
 
 import com.alibaba.fastjson2.JSONObject;
+import com.demo.client.SyncClient;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import vip.toby.demo.client.AsyncClient;
-import vip.toby.demo.client.SyncClient;
 import vip.toby.demo.entity.PlusDTO;
 import vip.toby.rpc.annotation.EnableSimpleRpc;
 import vip.toby.rpc.entity.RpcResult;
@@ -23,8 +23,8 @@ import vip.toby.rpc.entity.RpcResult;
 @Slf4j
 public class Application {
 
-    private final SyncClient syncClient;
     private final AsyncClient asyncClient;
+    private final SyncClient syncClient;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
