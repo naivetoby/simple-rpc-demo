@@ -1,8 +1,6 @@
 package vip.toby.demo.server;
 
 import com.alibaba.fastjson2.JSONObject;
-import org.springframework.validation.annotation.Validated;
-import vip.toby.demo.entity.PlusDTO;
 import vip.toby.rpc.annotation.RpcServer;
 import vip.toby.rpc.annotation.RpcServerMethod;
 import vip.toby.rpc.entity.RpcType;
@@ -28,17 +26,6 @@ public class Server {
     @RpcServerMethod("methodName2-alias")
     public ServerResult methodName2(JSONObject params) {
         return ServerResult.buildFailureMessage("失败").errorCode(233);
-    }
-
-    @RpcServerMethod
-    public ServerResult methodName3(@Validated PlusDTO plusDTO) {
-        int x = plusDTO.getX();
-        int y = plusDTO.getY();
-        JSONObject result = new JSONObject();
-        result.put("x", x);
-        result.put("y", y);
-        result.put("result", x + y);
-        return ServerResult.buildSuccessResult(result).message("ok");
     }
 
 }

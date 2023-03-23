@@ -1,7 +1,5 @@
-package com.demo.client;
+package vip.toby.demo.client;
 
-import com.alibaba.fastjson2.JSONObject;
-import vip.toby.demo.entity.PlusDTO;
 import vip.toby.rpc.annotation.RpcClient;
 import vip.toby.rpc.annotation.RpcClientMethod;
 import vip.toby.rpc.entity.RpcResult;
@@ -18,8 +16,5 @@ public interface SyncClient {
 
     @RpcClientMethod("methodName2-alias")
     RpcResult methodName2(String param1, int param2);
-
-    @RpcClientMethod
-    RpcResult methodName3(PlusDTO plusDTO, JSONObject data, int x, int y);
 
 }
