@@ -17,6 +17,14 @@
 
     <name>simple-rpc-demo</name>
 
+    <developers>
+        <developer>
+            <id>NaiveToby</id>
+            <name>NaiveToby</name>
+            <email>naivetoby@gmail.com</email>
+        </developer>
+    </developers>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
