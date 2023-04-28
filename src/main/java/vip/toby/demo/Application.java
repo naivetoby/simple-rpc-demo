@@ -8,7 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import vip.toby.demo.client.AsyncClient;
+import vip.toby.demo.client.DelayClient;
 import vip.toby.demo.client.SyncClient;
+import vip.toby.demo.entity.DelayPlusDTO;
 import vip.toby.demo.entity.PlusDTO;
 import vip.toby.rpc.annotation.EnableSimpleRpc;
 import vip.toby.rpc.entity.RpcResult;
@@ -27,6 +29,7 @@ public class Application {
     private final AsyncClient asyncClient;
     private final SyncClient syncClient;
     private final OtherSyncClient otherSyncClient;
+    private final DelayClient delayClient;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -44,6 +47,8 @@ public class Application {
             syncClient.methodName1("param1", 2);
             syncClient.methodName1("dew", 46);
             asyncClient.methodName2("sss", 27);
+
+
             PlusDTO plusDTO = new PlusDTO();
             plusDTO.setX(1);
             plusDTO.setY(1);
@@ -52,6 +57,14 @@ public class Application {
             data.put("y", 2);
             RpcResult rpcResult = otherSyncClient.methodName3(plusDTO, data, 3, 3);
             log.info("result: {}", rpcResult.getServerResult().getResult());
+
+            final DelayPlusDTO delayPlusDTO = new DelayPlusDTO();
+            delayPlusDTO.setCreateTime(System.currentTimeMillis());
+            delayPlusDTO.setDelay(30000);
+            delayPlusDTO.setX(5);
+            delayPlusDTO.setY(8);
+            delayClient.delayPlus(delayPlusDTO);
+
         }).start();
     }
 
