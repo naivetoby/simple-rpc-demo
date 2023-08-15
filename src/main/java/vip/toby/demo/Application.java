@@ -41,7 +41,7 @@ public class Application {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
             }
             syncClient.methodName1("param1", 2);
             syncClient.methodName1("param1", 2);

@@ -11,11 +11,11 @@ import vip.toby.rpc.entity.RpcDelayDTO;
 public class DelayPlusDTO extends RpcDelayDTO {
 
     @NotNull
-    private long createTime;
+    private Long createTime;
 
     @NotNull
     @Min(1)
-    private int x;
+    private Integer x;
 
     private int y;
 
