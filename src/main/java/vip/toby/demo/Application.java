@@ -1,6 +1,5 @@
 package vip.toby.demo;
 
-import com.alibaba.fastjson2.JSONObject;
 import com.demo.client.OtherSyncClient;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -38,29 +37,44 @@ public class Application {
     @PostConstruct
     public void test() {
         new Thread(() -> {
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 log.error(e.getMessage(), e);
             }
-            syncClient.methodName1("param1", 2);
-            syncClient.methodName1("param1", 2);
-            syncClient.methodName1("dew", 46);
-            asyncClient.methodName2("sss", 27);
 
-
-            PlusDTO plusDTO = new PlusDTO();
+            // 同步调用 1
+            final PlusDTO plusDTO = new PlusDTO();
             plusDTO.setX(1);
             plusDTO.setY(1);
-            JSONObject data = new JSONObject();
-            data.put("x", 2);
-            data.put("y", 2);
-            RpcResult rpcResult = otherSyncClient.methodName3(plusDTO, data, 3, 3);
-            log.info("result: {}", rpcResult.getServerResult().getResult());
+            RpcResult rpcResult = syncClient.methodName1(plusDTO);
+            log.info("syncClient.methodName1, RStatusOk: {}, RResult: {}", rpcResult.isRStatusOk(), rpcResult.getRResult());
 
+            // 同步调用 1-1
+            plusDTO.setX(0);
+            rpcResult = syncClient.methodName1(plusDTO);
+            log.info("syncClient.methodName1, RStatusOk: {}, ErrorMessage: {}, ErrorCode: {}", rpcResult.isRStatusOk(), rpcResult.getResult()
+                    .getMessage(), rpcResult.getResult().getErrorCode());
+
+            // 同步调用 2
+            plusDTO.setX(2);
+            rpcResult = syncClient.methodName2(plusDTO);
+            log.info("syncClient.methodName2, RStatusOk: {}, ErrorMessage: {}, ErrorCode: {}", rpcResult.isRStatusOk(), rpcResult.getResult()
+                    .getMessage(), rpcResult.getResult().getErrorCode());
+
+            // 异步调用
+            asyncClient.methodName2(plusDTO);
+
+            // 同步调用 3
+            rpcResult = otherSyncClient.methodName3(plusDTO);
+            log.info("otherSyncClient.methodName3, RStatusOk: {}, RResult: {}", rpcResult.isRStatusOk(), rpcResult.getRResult());
+
+            // 延迟调用, 注意⚠️ RabbitMQ 需要启用插件 https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
             final DelayPlusDTO delayPlusDTO = new DelayPlusDTO();
             delayPlusDTO.setCreateTime(System.currentTimeMillis());
-            delayPlusDTO.setDelay(30000);
+            // 延迟 3 秒后调用
+            delayPlusDTO.setDelay(3000);
             delayPlusDTO.setX(5);
             delayPlusDTO.setY(8);
             delayClient.delayPlus(delayPlusDTO);

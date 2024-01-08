@@ -6,6 +6,8 @@ import vip.toby.rpc.annotation.RpcClientMethod;
 import vip.toby.rpc.entity.RpcType;
 
 /**
+ * DelayClient
+ *
  * @author toby
  */
 @RpcClient(value = "delay-plus", type = RpcType.DELAY)

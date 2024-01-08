@@ -26,5 +26,5 @@
         <appender-ref ref="consoleAppender"/>
         <appender-ref ref="dailyRollingFileAppender"/>
     </root>
-    <logger name="vip.toby" level="DEBUG"/>
+    <logger name="vip.toby" level="INFO"/>
 </configuration>
