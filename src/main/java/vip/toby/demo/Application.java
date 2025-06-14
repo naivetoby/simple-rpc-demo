@@ -1,6 +1,5 @@
 package vip.toby.demo;
 
-import com.demo.client.OtherSyncClient;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +26,7 @@ public class Application {
 
     private final AsyncClient asyncClient;
     private final SyncClient syncClient;
-    private final OtherSyncClient otherSyncClient;
+//    private final OtherSyncClient otherSyncClient;
     private final DelayClient delayClient;
 
     public static void main(String[] args) {
@@ -66,9 +65,9 @@ public class Application {
             // 异步调用
             asyncClient.methodName2(plusDTO);
 
-            // 同步调用 3
-            rpcResult = otherSyncClient.methodName3(plusDTO);
-            log.info("otherSyncClient.methodName3, RStatusOk: {}, RResult: {}", rpcResult.isRStatusOk(), rpcResult.getRResult());
+//            // 同步调用 3
+//            rpcResult = otherSyncClient.methodName3(plusDTO);
+//            log.info("otherSyncClient.methodName3, RStatusOk: {}, RResult: {}", rpcResult.isRStatusOk(), rpcResult.getRResult());
 
             // 延迟调用, 注意⚠️ RabbitMQ 需要启用插件 https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
             final DelayPlusDTO delayPlusDTO = new DelayPlusDTO();
