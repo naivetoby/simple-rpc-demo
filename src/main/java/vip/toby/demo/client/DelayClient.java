@@ -10,7 +10,7 @@ import vip.toby.rpc.entity.RpcType;
  *
  * @author toby
  */
-@RpcClient(value = "delay-plus", type = RpcType.DELAY)
+@RpcClient(name = "delay-plus", type = RpcType.DELAY)
 public interface DelayClient {
 
     @RpcClientMethod

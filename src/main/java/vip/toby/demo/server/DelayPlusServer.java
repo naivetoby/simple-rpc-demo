@@ -11,7 +11,7 @@ import vip.toby.rpc.entity.RpcType;
 /**
  * @author toby
  */
-@RpcServer(value = "delay-plus", type = RpcType.DELAY)
+@RpcServer(name = "delay-plus", type = RpcType.DELAY)
 @Slf4j
 public class DelayPlusServer {
 

@@ -11,7 +11,7 @@ import vip.toby.rpc.entity.RpcType;
  *
  * @author toby
  */
-@RpcClient(value = "rpc-queue-name", type = RpcType.SYNC)
+@RpcClient(name = "rpc-queue-name", type = RpcType.SYNC)
 public interface SyncClient {
 
     @RpcClientMethod

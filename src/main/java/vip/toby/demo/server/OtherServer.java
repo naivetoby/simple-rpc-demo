@@ -9,7 +9,7 @@ import vip.toby.rpc.entity.RpcType;
 /**
  * @author toby
  */
-@RpcServer(value = "rpc-queue-name-other", type = RpcType.SYNC)
+@RpcServer(name = "rpc-queue-name-other", type = RpcType.SYNC)
 public class OtherServer {
 
     @RpcServerMethod

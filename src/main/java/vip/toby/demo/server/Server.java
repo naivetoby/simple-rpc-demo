@@ -12,7 +12,7 @@ import vip.toby.rpc.entity.RpcType;
  *
  * @author toby
  */
-@RpcServer(value = "rpc-queue-name", type = {RpcType.SYNC, RpcType.ASYNC}, xMessageTTL = 1000, threadNum = 1)
+@RpcServer(name = "rpc-queue-name", type = {RpcType.SYNC, RpcType.ASYNC}, xMessageTTL = 1000, threadNum = 1)
 public class Server {
 
     @RpcServerMethod

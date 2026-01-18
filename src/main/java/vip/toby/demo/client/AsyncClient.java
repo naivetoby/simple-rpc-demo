@@ -10,7 +10,7 @@ import vip.toby.rpc.entity.RpcType;
  *
  * @author toby
  */
-@RpcClient(value = "rpc-queue-name", type = RpcType.ASYNC)
+@RpcClient(name = "rpc-queue-name", type = RpcType.ASYNC)
 public interface AsyncClient {
 
     @RpcClientMethod
