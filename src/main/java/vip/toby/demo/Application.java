@@ -49,26 +49,26 @@ public class Application {
             plusDTO.setX(1);
             plusDTO.setY(1);
             RpcResult rpcResult = syncClient.methodName1(plusDTO);
-            log.info("syncClient.methodName1, RStatusOk: {}, RResult: {}", rpcResult.isRStatusOk(), rpcResult.getRResult());
+            log.info("syncClient.methodName1, RCodeOk: {}, RResult: {}", rpcResult.isRCodeOk(), rpcResult.getRResult());
 
             // 同步调用 1-1
             plusDTO.setX(0);
             rpcResult = syncClient.methodName1(plusDTO);
-            log.info("syncClient.methodName1, RStatusOk: {}, ErrorMessage: {}, ErrorCode: {}", rpcResult.isRStatusOk(), rpcResult.getResult()
-                    .getMessage(), rpcResult.getResult().getErrorCode());
+            log.info("syncClient.methodName1, RCodeOk: {}, Message: {}, Code: {}", rpcResult.isRCodeOk(), rpcResult.getResult()
+                    .getMessage(), rpcResult.getResult().getCode());
 
             // 同步调用 2
             plusDTO.setX(2);
             rpcResult = syncClient.methodName2(plusDTO);
-            log.info("syncClient.methodName2, RStatusOk: {}, ErrorMessage: {}, ErrorCode: {}", rpcResult.isRStatusOk(), rpcResult.getResult()
-                    .getMessage(), rpcResult.getResult().getErrorCode());
+            log.info("syncClient.methodName2, RCodeOk: {}, Message: {}, Code: {}", rpcResult.isRCodeOk(), rpcResult.getResult()
+                    .getMessage(), rpcResult.getResult().getCode());
 
             // 异步调用
             asyncClient.methodName2(plusDTO);
 
             // 同步调用 3
             rpcResult = otherSyncClient.methodName3(plusDTO);
-            log.info("otherSyncClient.methodName3, RStatusOk: {}, RResult: {}", rpcResult.isRStatusOk(), rpcResult.getRResult());
+            log.info("otherSyncClient.methodName3, RCodeOk: {}, RResult: {}", rpcResult.isRCodeOk(), rpcResult.getRResult());
 
             // 延迟调用, 注意⚠️ RabbitMQ 需要启用插件 https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
             final DelayPlusDTO delayPlusDTO = new DelayPlusDTO();

@@ -1,6 +1,7 @@
 package vip.toby.demo.server;
 
 import org.springframework.validation.annotation.Validated;
+import vip.toby.demo.entity.BizCode;
 import vip.toby.demo.entity.PlusDTO;
 import vip.toby.rpc.annotation.RpcServer;
 import vip.toby.rpc.annotation.RpcServerMethod;
@@ -24,7 +25,7 @@ public class Server {
 
     @RpcServerMethod("methodName2-alias")
     public R methodName2(@Validated PlusDTO plusDTO) {
-        return R.failMessage("计算失败").errorCode(-9999);
+        return R.build(BizCode.PLUS_ERROR);
     }
 
 }
