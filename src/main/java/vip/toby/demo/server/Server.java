@@ -8,6 +8,8 @@ import vip.toby.rpc.annotation.RpcServerMethod;
 import vip.toby.rpc.entity.R;
 import vip.toby.rpc.entity.RpcType;
 
+import java.util.Map;
+
 /**
  * Server
  *
@@ -25,7 +27,7 @@ public class Server {
 
     @RpcServerMethod("methodName2-alias")
     public R methodName2(@Validated PlusDTO plusDTO) {
-        return R.build(BizCode.PLUS_ERROR);
+        return R.build(BizCode.PLUS_ERROR).detail(Map.of("plusDTO", plusDTO.toString(), "message", "methodName2-alias"));
     }
 
 }

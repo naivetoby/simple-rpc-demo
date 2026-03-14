@@ -59,7 +59,7 @@ public class Application {
             // 同步调用 2
             plusDTO.setX(2);
             rpcResult = syncClient.methodName2(plusDTO);
-            log.info("syncClient.methodName2, Ok: {}, Message: {}, Code: {}", rpcResult.isOk(), rpcResult.getMessage(), rpcResult.getCode());
+            log.info("syncClient.methodName2, Ok: {}, Message: {}, Code: {}, Detail: {}", rpcResult.isOk(), rpcResult.getMessage(), rpcResult.getCode(), rpcResult.getDetail());
 
             // 异步调用
             asyncClient.methodName2(plusDTO);
