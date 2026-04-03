@@ -64,6 +64,22 @@ public class Application {
             // 异步调用
             asyncClient.methodName2(plusDTO);
 
+            // 异步调用, partitionKey 示例, 相同 x 会进入同一分区队列
+            final PlusDTO partitionPlusDTO1 = new PlusDTO();
+            partitionPlusDTO1.setX(9);
+            partitionPlusDTO1.setY(1);
+            asyncClient.methodName3(partitionPlusDTO1);
+
+            final PlusDTO partitionPlusDTO2 = new PlusDTO();
+            partitionPlusDTO2.setX(9);
+            partitionPlusDTO2.setY(2);
+            asyncClient.methodName3(partitionPlusDTO2);
+
+            final PlusDTO partitionPlusDTO3 = new PlusDTO();
+            partitionPlusDTO3.setX(10);
+            partitionPlusDTO3.setY(3);
+            asyncClient.methodName3(partitionPlusDTO3);
+
             // 同步调用 3
             rpcResult = otherSyncClient.methodName3(plusDTO);
             log.info("otherSyncClient.methodName3, Ok: {}, Result: {}", rpcResult.isOk(), rpcResult.getResult());

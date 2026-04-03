@@ -10,7 +10,7 @@ import vip.toby.rpc.entity.RpcType;
  *
  * @author toby
  */
-@RpcClient(name = "rpc-queue-name", type = RpcType.ASYNC)
+@RpcClient(name = "rpc-queue-name", type = RpcType.ASYNC, partitionNum = 4)
 public interface AsyncClient {
 
     @RpcClientMethod
@@ -18,5 +18,8 @@ public interface AsyncClient {
 
     @RpcClientMethod("methodName2-alias")
     void methodName2(PlusDTO plusDTO);
+
+    @RpcClientMethod(partitionKey = "x")
+    void methodName3(PlusDTO plusDTO);
 
 }
